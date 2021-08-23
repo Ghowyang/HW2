@@ -11,3 +11,16 @@ def find_href():
     
     typehrefdel=list(OrderedDict.fromkeys(typehref))
     return(typehrefdel)
+   
+   
+def article(href):
+   exe=[]
+    for i in href:
+        url=i
+        r = requests.get(url)
+        so = BeautifulSoup(r.text)
+
+        name_ch=so.find('h1').text.strip()
+        name_en=so.find('h3').text.strip()
+        print(name_ch)
+        print(name_en)
