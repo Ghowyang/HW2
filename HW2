@@ -1,9 +1,3 @@
-import requests
-from bs4 import BeautifulSoup
-import pandas
-import numpy
-from collections import OrderedDict
-
 typehref = []
 def find_href():
     for types in range(21):
@@ -12,3 +6,8 @@ def find_href():
             url= urlFront+str(types+1)+"&page="+str(pages+1)
             r = requests.get(url)
             soup=(BeautifulSoup(r.text))
+            for d in soup.find_all('div', class_="release_movie_name"):
+                typehref.append(d.find('a', class_='gabtn')['href'])
+    
+    typehrefdel=list(OrderedDict.fromkeys(typehref))
+    return(typehrefdel)
