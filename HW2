@@ -22,5 +22,4 @@ def article(href):
 
         name_ch=so.find('h1').text.strip()
         name_en=so.find('h3').text.strip()
-        print(name_ch)
-        print(name_en)
+date=so.find('div',class_= 'movie_intro_info_r').find('span').text.split('上映日期：')[1]
