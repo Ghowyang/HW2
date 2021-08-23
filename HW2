@@ -1,0 +1,14 @@
+import requests
+from bs4 import BeautifulSoup
+import pandas
+import numpy
+from collections import OrderedDict
+
+typehref = []
+def find_href():
+    for types in range(21):
+        for pages in range(100):
+            urlFront = "https://movies.yahoo.com.tw/moviegenre_result.html?genre_id="
+            url= urlFront+str(types+1)+"&page="+str(pages+1)
+            r = requests.get(url)
+            soup=(BeautifulSoup(r.text))
